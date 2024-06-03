@@ -1,59 +1,17 @@
-const productos = [
-  { nombre: 'yerba', precio: 1200 },
-  { nombre: 'arroz', precio: 1800 },
-  { nombre: 'fideos', precio: 900 },
-  { nombre: 'leche', precio: 700 },
-  { nombre: 'harina', precio: 1450 },
-];
+// console.log(document.body);
 
-let carrito = [];
+let formulario = document.querySelector('form'); // Cambiado para seleccionar el formulario en lugar de todos los inputs
 
-alert("Bienvenido a Supermarket")
+// Imprime el formulario en la consola
+console.log(formulario);
 
-function ingresoUsuario() {
-  const usuarioValido = "pepe";
-  const contrasenaValida = "10";
-  let intentos = 3;
-
-  while (intentos > 0) {
-    const usuario = prompt("Ingrese su nombre de usuario: ");
-    const contrasena = prompt("Ingrese su contraseña: ");
-
-    if (usuario === usuarioValido && contrasena === contrasenaValida) {
-      alert("Bienvenido al carrito de compras.");
-      console.log(productos);
-      return true;
-    } else {
-      intentos--;
-      alert(`Usuario o contraseña incorrectos. Intentos restantes: ${intentos}`);
-    }
-  }
-
-  alert("Ha agotado todos los intentos. Acceso denegado.");
-  return false;
-}
-
-if (ingresoUsuario()) {
-  let compra = true;
-
-  while (compra) {
-    let productoSeleccionado = prompt("Ingrese el nombre del producto que desea agregar al carrito: ");
-
-    let productoEncontrado = productos.find(producto => producto.nombre === productoSeleccionado);
-
-    if (productoEncontrado) {
-      let unidades = parseInt(prompt("Ingrese las unidades: "));
-      carrito.push({ nombre: productoSeleccionado, precio: productoEncontrado.precio, cantidad: unidades });
-      console.log("Producto agregado al carrito:", carrito);
-    } else {
-      alert("¡Producto no encontrado!");
-    }
-
-    compra = confirm("¿Desea seguir comprando?");
-  }
-
-  alert("Gracias por su compra. Aquí está su carrito:");
-  console.log(carrito);
-} else {
-  alert("Ha agotado todos los intentos. Acceso denegado.");
-}
+// Añade un event listener al formulario para el evento submit
+formulario.addEventListener('submit', function(e) {
+    e.preventDefault(); // Previene el envío del formulario
+    
+    // Selecciona el primer input dentro del formulario y obtiene su valor
+    let mail = formulario.querySelector('input').value;
+    
+    // Imprime el valor del input en la consola
+    console.log(mail);
+});
