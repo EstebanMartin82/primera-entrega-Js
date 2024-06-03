@@ -6,8 +6,11 @@ let formulario = document.querySelector('form');
 console.log(formulario);
 
 formulario.addEventListener('submit', function(e) {
-    e.preventDefault(); // 
+    e.preventDefault(); 
     
-    let mail = formulario.querySelector('input').value;
-    console.log(mail);
+    let mail = formulario.querySelectorAll('input');
+    mail.forEach(function(input) {
+    
+        console.log(input.value);
+    });
 });
